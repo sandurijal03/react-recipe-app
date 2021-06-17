@@ -1,0 +1,23 @@
+mutation SIGN_UP($username: String!, $email: String!, $password: String!) {
+  signupUser(username: $username, email: $email, password: $password) {
+    token
+  }
+}
+
+mutation SIGN_IN($username: String!, $password: String!) {
+  signinUser(username: $username, password: $password) {
+    token
+  }
+}
+
+query GET_CURRENT_USER {
+  getCurrentUser {
+    username
+    joinDate
+    email
+    favorites {
+      _id
+      name
+    }
+  }
+}

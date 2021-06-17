@@ -1,0 +1,63 @@
+mutation CREATE_RECIPE(
+  $name: String!
+  $description: String!
+  $category: String!
+  $instructions: String!
+) {
+  addRecipe(
+    name: $name
+    description: $description
+    category: $category
+    instructions: $instructions
+  ) {
+    name
+    category
+    description
+    instructions
+  }
+}
+
+query GET_ALL_RECIPES {
+  getAllRecipes {
+    _id
+    name
+    category
+    description
+    instructions
+    createdDate
+    likes
+    username
+  }
+}
+
+query getRecipe($_id: ID!) {
+  getRecipe(_id: $_id) {
+    name
+    category
+    description
+    category
+    username
+    likes
+  }
+}
+
+query SEARCH_RECIPE($searchTerm: String) {
+  searchRecipes(searchTerm: $searchTerm) {
+    _id
+    name
+    category
+    likes
+  }
+}
+
+query GET_USER_RECIPES($username: String!) {
+  getUserRecipes(username: $username) {
+    name
+    category
+    description
+    instructions
+    createdDate
+    likes
+    _id
+  }
+}
